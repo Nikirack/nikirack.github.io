@@ -78,3 +78,10 @@ h3{
     display: block;
     text-align: center;
 }
+.link404{
+    text-decoration-color: white;
+    color: white;
+}
+.link404:hover{
+    opacity: 0.8;
+}
