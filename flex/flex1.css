@@ -12,11 +12,12 @@ nav {
     justify-content: left;
     gap: 2rem;
     border: 0.1rem solid black;
-    /* margin: 0.5rem; */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 2rem;
-    margin-right:2rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    position: fixed;
+    height: 50px;
+    border-radius: 3px
 }
 
 nav > a {
@@ -25,6 +26,7 @@ nav > a {
     color: rgb(255, 0, 0);
     text-decoration: solid;
     border: 0.1rem solid black;
+    border-radius: 3px
 }
 nav > a:hover {
     background-color: rgb(255, 190, 190);
@@ -35,4 +37,5 @@ main {
     padding: 10px;
     margin-left: 2rem;
     margin-right:2rem;
+    padding-top: 100px;
 }
