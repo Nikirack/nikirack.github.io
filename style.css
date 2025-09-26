@@ -1,0 +1,95 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+
+}
+
+nav {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    border: 0.2rem solid black;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    position: fixed;
+    height: 50px;
+}
+
+nav > a {
+    padding: 1rem;
+}
+
+nav > p {
+    padding-left: 0.5rem;
+    margin-right: auto;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+a:hover {
+    color: gray;
+}
+
+main {
+    display: flex;
+    padding-top: 100px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: calc(100% - 100px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main > h1 {
+    font-size: clamp(1rem, 3vw, 2.5rem);
+
+}
+
+.flat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flat-list > a {
+        margin: 5px;
+}
+
+#projects {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#projects > article{
+    max-width: 800px;
+    padding: 1rem;
+    display: flex;
+    border: 0.2rem solid black;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#projects > article > ul,
+#projects > article > h1 {
+    text-align: center
+}
+
+#projects > article > p {
+    margin-left:10px;
+    margin-right:10px;
+}
