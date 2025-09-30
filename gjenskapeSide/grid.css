@@ -1,0 +1,42 @@
+html, body {
+    width: 100%;
+    height: 100%; 
+    margin: 0; padding: 0;
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+    "a b e e d"
+    "a b e e d"
+    "a c c c c";
+}
+main > div {
+  background-color: #aac9c6;
+  border: 1px solid black;
+}
+
+.a { grid-area: a; background-color: yellow; }
+.b { grid-area: b; background-color: pink; }
+.c { grid-area: c; background-color: red; }
+.d { grid-area: d; background-color: grey; }
+.e { grid-area: e; background-color: aquamarine; }
+
+@media only screen and (max-width: 900px) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas: 
+        "a a b"
+        "a a b"
+        "c c b"
+        "d d d"
+        "e e e"
+        "e e e";
+    }
+    
+}
