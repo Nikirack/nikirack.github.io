@@ -21,6 +21,7 @@ nav {
     right: 0.5rem;
     position: fixed;
     height: 50px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2)
 }
 
 nav > a {
@@ -52,7 +53,9 @@ main {
 }
 
 main > h1 {
-    font-size: clamp(1rem, 3vw, 2.5rem);
+    font-size: clamp(0.9rem, 3vw, 2.5rem);
+    /* background-color:black;
+    color: white; */
 
 }
 
@@ -67,10 +70,13 @@ main > h1 {
 }
 
 #projects {
-    display: flex;
+    /* display: flex; */
     width: 100%;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
 }
 
 #projects > article{
@@ -93,3 +99,14 @@ main > h1 {
     margin-left:10px;
     margin-right:10px;
 }
+
+/* @media only screen and (min-width: 900px) {
+    #projects {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center
+    } 
+    #projects > article{
+        max-width: 380px;
+    }
+} */
