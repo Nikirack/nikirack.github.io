@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+#dealer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.kort {
+    position: relative;
+    height: 300px;
+    width: 200px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.kort > h1 {
+    padding: 0;
+    margin: 10px;
+}
+
+.kort > h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    font-size: 10rem;
+}
+
+#hånd {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: fit-content;
+}
+
+#total {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    margin-left: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#knapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#knapper button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+#knapper button:hover {
+    background-color: black;
+    color: white;
+}
