@@ -1,0 +1,71 @@
+/* #bildet {
+    width:100%;
+    max-width:100vw;
+    height:95vh;
+}
+#nesteBildet {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+} */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#bilderDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bilderDiv img {
+    width: 60%;
+    height: auto;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#bildet {
+    z-index: 2;
+    transform: scale(1);
+}
+
+#forgeBildet,
+#nesteBildetImg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.8);
+    opacity: 0.6;
+}
+
+
+#forgeBildet {
+    left: -15%;
+}
+
+#nesteBildetImg {
+    right: -15%;
+}
+
+#nesteBildetKnapp {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#knapper {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#forgeBildetKnapp {
+    padding: 10px 20px;
+    font-size: 16px;
+}
