@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    /* font-family: Arial, sans-serif; */
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 main {
@@ -10,12 +17,6 @@ main {
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-}
-
-#dealer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
 }
 
 .kort {
@@ -41,6 +42,7 @@ main {
     font-size: 10rem;
 }
 
+#dealer,
 #hånd {
     position: relative;
     display: flex;
@@ -50,14 +52,17 @@ main {
     max-width: fit-content;
 }
 
-#total {
+.total {
     position: absolute;
-    bottom: 0;
     left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     margin-left: 10px;
     font-size: 2rem;
     font-weight: bold;
 }
+
+
 
 #knapper {
     display: flex;
@@ -66,7 +71,7 @@ main {
     margin-top: 20px;
 }
 
-#knapper button {
+.knapp {
     padding: 10px 20px;
     font-size: 1.2rem;
     border-radius: 5px;
@@ -76,7 +81,39 @@ main {
     transition: all 0.2s ease;
 }
 
-#knapper button:hover {
+.knapp:hover {
     background-color: black;
     color: white;
+}
+
+/* Fått hjep av chat med dette */
+.fullscreen-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+    z-index: 9999;
+}
+
+.popup-knapp {
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    transition: all 0.2s ease;
+}
+.popup-knapp:hover {
+    background: rgba(255, 255, 255, 0.104);
+    color: rgb(255, 255, 255);
 }
