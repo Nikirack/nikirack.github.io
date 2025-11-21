@@ -82,6 +82,13 @@ function getDealer(spillerHånd) {
 
 
 function genererKortFerdig(arr, div) {
+    if (arr == dealer) {
+        let chipsHTML = document.createElement("span");
+        chipsHTML.innerText = "chips: "+chips;
+        chipsHTML.className = "chips";
+        div.appendChild(chipsHTML);
+    }
+
     for (let index = 0; index < arr.length; index++) {
         const kort = arr[index];
         lagKortHTML(kort[0], kort[1], div);
@@ -91,6 +98,40 @@ function genererKortFerdig(arr, div) {
     totalHTML.innerText = total(arr);
     totalHTML.className = "total";
     div.appendChild(totalHTML);
+}
+
+function hit() {
+    håndHTML.innerHTML = "";
+    trekkKort(1, hånd);
+    genererKortFerdig(hånd, håndHTML);
+    if (total(hånd) > 21) {
+        bett = 0
+        lagFullScreenPopup("Du tapte", "Du gikk bust", "rgba(219, 23, 23, 0.85)");
+    }
+}
+
+function stand() {
+    score = getDealer(hånd);
+    if (score == "uavgjort") {
+        chips += bett
+        bett = 0
+        lagFullScreenPopup("Uavgjort", "Begge fikk 21", "rgba(255, 234, 0, 0.85)");
+    } else if (score == true) {
+        bett = 0
+        lagFullScreenPopup("Du tapte", "Dealer fikk " + total(dealer), "rgba(219, 23, 23, 0.85)");
+    } else {
+        if (total(dealer) > 20) {
+            chips = chips + (2*bett)
+            bett = 0
+            lagFullScreenPopup("Du vant!", "Dealer gikk bust", "rgba(0, 150, 0, 0.85)");
+        } else {
+            chips = chips + (2*bett)
+            bett = 0
+            lagFullScreenPopup("Du vant!", "Dealer fikk bare " + total(dealer), "rgba(0, 150, 0, 0.85)");
+        }
+    }
+    dealerHTML.innerHTML = "";
+    genererKortFerdig(dealer, dealerHTML);
 }
 
 // funksjon laget ved hjelp chat
@@ -106,56 +147,89 @@ function lagFullScreenPopup(melding, undertekst, bgColor = "rgba(0,0,0,0.8)") {
     const p = document.createElement("p");
     p.textContent = undertekst;
     popup.appendChild(p);
-
-    const button = document.createElement("button");
-    button.textContent = "Lukk";
-    button.className = "popup-knapp";
-    popup.appendChild(button);
-
-    button.onclick = () => {
+    setTimeout(() => {
         popup.remove();
-        window.location.reload();
-    };
+        // window.location.reload();
+        startRundeFørBett()
+    },1000)
     document.body.appendChild(popup);
 }
 
+// Startere
+
+
+function startRundeFørBett() {
+    lagKortstokk();
+    hånd = [];
+    dealer = [];
+    håndHTML.innerHTML = "";
+    dealerHTML.innerHTML = '<span class="chips">Chips: '+chips+'</span><div class="kort"></div><div class="kort"></div>';
+    document.getElementById("hit").style.display = "none";
+    document.getElementById("stand").style.display = "none";
+    document.getElementById("bet").style.display = "inline-block";
+    document.getElementById("betInput").style.display = "inline-block";
+    document.getElementById("betInput").max = chips
+}
+
+function startRunde() {
+    document.getElementById("hit").style.display = "inline-block";
+    document.getElementById("stand").style.display = "inline-block";
+    document.getElementById("bet").style.display = "none";
+    document.getElementById("betInput").style.display = "none";
+    trekkKort(2, hånd);
+    genererKortFerdig(hånd, håndHTML);
+}
+
+function betClick() {
+    const input = document.getElementById("betInput").valueAsNumber;
+
+    if (!input || input <= 0) return;
+    if (input > chips) {
+        alert("Not enough chips!");
+        return;
+    }
+
+    bett = input;
+    chips -= bett;
+    dealerHTML.innerHTML = '<span class="chips">Chips: '+chips+'</span><div class="kort"></div><div class="kort"></div>';
+    startRunde()
+}
 
 // Spill
 const håndHTML = document.getElementById("hånd");
 const dealerHTML = document.getElementById("dealer");
 
-lagKortstokk();
-let hånd = [];
-let dealer = [];
+let chips = 100
+let bett = 0
 
-trekkKort(2, hånd);
-genererKortFerdig(hånd, håndHTML);
+startRundeFørBett()
+
 
 // console.log(kortstokk);
 // console.log(hånd);
 
-document.getElementById("hit").addEventListener("click", () => {
-    håndHTML.innerHTML = "";
-    trekkKort(1, hånd);
-    genererKortFerdig(hånd, håndHTML);
-    if (total(hånd) > 21) {
-        lagFullScreenPopup("Du tapte", "Du gikk bust", "rgba(219, 23, 23, 0.85)");
+
+document.getElementById("betInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        betClick()
     }
+
 });
 
-document.getElementById("stand").addEventListener("click", () => {
-    score = getDealer(hånd);
-    if (score == "uavgjort") {
-        lagFullScreenPopup("Uavgjort", "Begge fikk 21", "rgba(255, 234, 0, 0.85)");
-    } else if (score == true) {
-        lagFullScreenPopup("Du tapte", "Dealer fikk " + total(dealer), "rgba(219, 23, 23, 0.85)");
-    } else {
-        if (total(dealer) > 20) {
-            lagFullScreenPopup("Du vant!", "Dealer gikk bust", "rgba(0, 150, 0, 0.85)");
-        } else {
-            lagFullScreenPopup("Du vant!", "Dealer fikk bare " + total(dealer), "rgba(0, 150, 0, 0.85)");
+document.getElementById("bet").addEventListener("click", betClick);
+document.getElementById("hit").addEventListener("click",hit);
+document.getElementById("stand").addEventListener("click",stand);
+
+document.addEventListener("keydown", function(event) {
+    console.log("Tasten " + event.key + " ble trykket ned.");
+
+    if (event.key === "h") {
+        if (bett != 0) {
+            hit()
+        }
+    } else if (event.key === "s") {
+        if (bett != 0) {
+            stand()
         }
     }
-    dealerHTML.innerHTML = "";
-    genererKortFerdig(dealer, dealerHTML);
 });
