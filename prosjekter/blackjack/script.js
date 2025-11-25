@@ -158,6 +158,20 @@ function betClick() {
     startRunde();
 }
 
+function maxBett() {
+    const input = chips;
+    if (!input || input <= 0) return;
+    if (input > chips) {
+        alert("Not enough chips!");
+        return;
+    }
+    bett = input;
+    chips -= bett;
+    dealerHTML.innerHTML = '<span class="chips">Chips: ' + chips + '</span><div class="kort"></div><div class="kort"></div>';
+    startRunde();
+}
+
+
 
 // lage en popup som forsvinner etter 1 sekund, funksjon laget ved hjelp chat
 function lagFullScreenPopup(melding, undertekst, bgColor = "rgba(0,0,0,0.8)") {
@@ -190,6 +204,7 @@ function startRundeFørBett() {
     document.getElementById("hit").style.display = "none";
     document.getElementById("stand").style.display = "none";
     document.getElementById("bet").style.display = "inline-block";
+    document.getElementById("maxBet").style.display = "inline-block";
     document.getElementById("betInput").style.display = "inline-block";
     document.getElementById("betInput").max = chips;
 }
@@ -199,9 +214,17 @@ function startRunde() {
     document.getElementById("hit").style.display = "inline-block";
     document.getElementById("stand").style.display = "inline-block";
     document.getElementById("bet").style.display = "none";
+    document.getElementById("maxBet").style.display = "none";
     document.getElementById("betInput").style.display = "none";
     trekkKort(2, hånd);
     genererKortFerdig(hånd, håndHTML);
+
+    if (total(hånd) === 21) {
+        chips += Math.floor(bett * 2.5);
+        bett = 0;
+        lagFullScreenPopup("NATURAL BLACKJACK!", "Du fikk 21 på første hånd!", "rgba(0, 150, 0, 0.85)");
+    }
+
 }
 
 // Spill
@@ -221,6 +244,7 @@ document.getElementById("betInput").addEventListener("keydown", function (event)
 });
 
 document.getElementById("bet").addEventListener("click", betClick);
+document.getElementById("maxBet").addEventListener("click", maxBett);
 document.getElementById("hit").addEventListener("click", hit);
 document.getElementById("stand").addEventListener("click", stand);
 
@@ -234,6 +258,10 @@ document.addEventListener("keydown", function (event) {
     } else if (event.key === "s") {
         if (bett != 0) {
             stand();
+        }
+    } else if (event.key === "m") {
+        if (bett == 0) {
+            maxBett();
         }
     }
 });
