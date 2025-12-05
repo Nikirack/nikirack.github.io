@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #9effa6 0%, #10ae52 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+form {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+input[type="color"] {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 8px;
+    margin-bottom: 0;
+    accent-color: #667eea;
+    cursor: pointer;
+}
+
+label[for="mann"],
+label[for="kvinne"] {
+    display: inline;
+    font-weight: normal;
+    margin-right: 20px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+input[type="color"] {
+    height: 50px;
+    padding: 4px;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+}
+
+input[type="color"]:hover {
+    border-color: #667eea;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #acea66 0%, #5ea24b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+input:invalid {
+    background-color: #ffe8e8;
+    border: 2px solid red;
+}
+
+input:valid {
+    background-color: #e8fff1;
+    border: 2px solid green;
+}
+
+input:focus:invalid {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    outline: none; 
+}

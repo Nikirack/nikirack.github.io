@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="form1.js" defer></script>
+    <link rel="stylesheet" href="form1.css">
+</head>
+<body>
+    <form id="skjema">
+        <label for="email">E-post:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Passord:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="alder">Alder:</label>
+        <input type="number" id="alder" name="alder" min="1" max="120" required>
+
+        <label>Kjønn:</label>
+        <input type="radio" id="mann" name="kjonn" value="mann" required>
+        <label for="mann">Mann</label>
+        <input type="radio" id="kvinne" name="kjonn" value="kvinne">
+        <label for="kvinne">Kvinne</label>
+
+        <label for="interesser">Interesser:</label>
+        <select id="interesser" name="interesser">
+            <option value="sport">Sport</option>
+            <option value="musikk">Musikk</option>
+            <option value="kunst">Kunst</option>
+        </select>
+
+        <label for="farge">Favorittfarge:</label>
+        <input type="color" id="farge" name="farge" value="#ff0000">
+
+        <button type="submit">Send inn</button>
+    </form>
+</body>
+</html>

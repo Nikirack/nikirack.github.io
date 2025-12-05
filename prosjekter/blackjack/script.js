@@ -130,7 +130,7 @@ function stand() {
         bett = 0;
         lagFullScreenPopup("Du tapte", "Dealer fikk " + total(dealer), "rgba(219, 23, 23, 0.85)");
     } else {
-        if (total(dealer) > 20) {
+        if (total(dealer) > 21) {
             chips = chips + (2 * bett);
             bett = 0;
             lagFullScreenPopup("Du vant!", "Dealer gikk bust", "rgba(0, 150, 0, 0.85)");
