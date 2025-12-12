@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    background: linear-gradient(#001026, #002a55);
+    overflow: hidden;
+    height: 100vh;
+    color: white;
+    font-family: sans-serif;
+}
+/* Snøfall */
+.snow {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 15px;
+    animation: fall linear infinite;
+    opacity: 0.9;
+}
+@keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110vh) ; } /*rotate(360deg)*/
+}
+
+.calendar-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.day {
+    background: #0a3c68;
+    border-radius: 10px;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 18px;
+}
+ 
+.day.locked {
+    background: #333;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.day.open {
+    background: #1c7ed6;
+    transform: scale(1.05);
+}
+
+#countdown {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #ffd700; /* gullfarge */
+}
+.emoji-input-container {
+    position: fixed;
+    bottom: 10px; /* nederst */
+    left: 10px;   /* venstre hjørne */
+    z-index: 2000; /* over snø og kalender */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+#emojiInput {
+    padding: 5px 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 160px; /* bred nok for placeholder "Skriv emoji her" */
+    background: rgba(255,255,255,0.1);
+    color: white;
+    text-align: center; /* sentrerer teksten fint */
+}
